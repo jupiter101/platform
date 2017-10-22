@@ -1,0 +1,28 @@
+{
+  "name": "@jupiter/store",
+  "version": "0.1.0",
+  "description": "RxJS powered Redux for Angular apps",
+  "module": "@jupiter/store.es5.js",
+  "es2015": "@jupiter/store.js",
+  "main": "bundles/store.umd.js",
+  "typings": "store.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jupiter101/platform.git"
+  },
+  "keywords": [
+    "RxJS",
+    "Angular",
+    "Redux"
+  ],
+  "author": "Stephan Petzchen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jupiter101/platform/issues"
+  },
+  "homepage": "https://github.com/jupiter101/platform#readme",
+  "peerDependencies": {
+    "@angular/core": "^4.4.6",
+    "rxjs": "^5.5.0"
+  }
+}

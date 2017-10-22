@@ -1,0 +1,30 @@
+{
+  "name": "@jupiter/store-devtools",
+  "version": "0.1.0",
+  "description": "Developer tools for @jupiter/store",
+  "module": "@jupiter/store-devtools.es5.js",
+  "es2015": "@jupiter/store-devtools.js",
+  "main": "bundles/store-devtools.umd.js",
+  "typings": "store-devtools.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jupiter101/platform.git"
+  },
+  "keywords": [
+    "RxJS",
+    "Angular",
+    "Redux",
+    "Store",
+    "@jupiter/store"
+  ],
+  "author": "Stephan Petzchen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jupiter101/platform/issues"
+  },
+  "homepage": "https://github.com/jupiter101/platform#readme",
+  "peerDependencies": {
+    "@ngrx/store": "^0.1.0",
+    "rxjs": "^5.5.0"
+  }
+}

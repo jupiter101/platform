@@ -1,0 +1,22 @@
+{
+  "name": "@jupiter/effects",
+  "version": "0.1.0",
+  "description": "Side effect model for @jupiter/store",
+  "module": "@jupiter/effects.es5.js",
+  "es2015": "@jupiter/effects.js",
+  "main": "bundles/effects.umd.js",
+  "typings": "effects.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jupiter101/platform.git"
+  },
+  "authors": [
+    "Stephan Petzchen"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/core": "^4.4.6",
+    "@ngrx/store": "^0.1.0",
+    "rxjs": "^5.5.0"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "@jupiter/router-store",
+  "version": "0.1.0",
+  "description": "Bindings to connect @angular/router to @jupiter/store",
+  "module": "@jupiter/router-store.es5.js",
+  "es2015": "@jupiter/router-store.js",
+  "main": "bundles/router-store.umd.js",
+  "typings": "router-store.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jupiter101/platform.git"
+  },
+  "keywords": [
+    "RxJS",
+    "Angular",
+    "Redux"
+  ],
+  "authors": [
+    "Stephan Petzchen"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^4.4.6",
+    "@angular/core": "^4.4.6",
+    "@angular/router": "^4.4.6",
+    "@ngrx/store": "^0.1.0",
+    "rxjs": "^5.5.0"
+  }
+}

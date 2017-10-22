@@ -1,0 +1,16 @@
+{
+  "name": "rxjs-poc",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "author": "Stephan Petzchen",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/reflect-metadata": "0.0.5",
+    "reflect-metadata": "^0.1.10",
+    "ts-node": "^3.3.0"
+  },
+  "dependencies": {
+    "rxjs": "^5.5.0"
+  }
+}
