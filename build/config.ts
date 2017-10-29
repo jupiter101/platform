@@ -10,23 +10,11 @@ export interface Config {
 
 export const packages: PackageDescription[] = [
   {
-    name: 'store',
+    name: 'db',
     hasTestingModule: false,
   },
   {
-    name: 'effects',
-    hasTestingModule: true,
-  },
-  {
-    name: 'router-store',
+    name: 'validation',
     hasTestingModule: false,
-  },
-  {
-    name: 'store-devtools',
-    hasTestingModule: false,
-  },
-  {
-    name: 'entity',
-    hasTestingModule: false,
-  },
+  }
 ];
