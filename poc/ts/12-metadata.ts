@@ -1,8 +1,8 @@
 // tslint:disable:no-trailing-whitespace
 // tslint:disable:no-inferrable-types
-import {Type} from "@angular/core";
+import { Type } from '@angular/core';
 
-function getAnnotations(typeOrFunc: Type<any>): any[]|null {
+function getAnnotations(typeOrFunc: Type<any>): any[] | null {
   // Prefer the direct API.
   if ((<any>typeOrFunc).annotations) {
     let annotations = (<any>typeOrFunc).annotations;
@@ -24,14 +24,18 @@ function getAnnotations(typeOrFunc: Type<any>): any[]|null {
   return null;
 }
 
-function convertTsickleDecoratorIntoMetadata(decoratorInvocations: any[]): any[] {
+function convertTsickleDecoratorIntoMetadata(
+  decoratorInvocations: any[]
+): any[] {
   if (!decoratorInvocations) {
     return [];
   }
   return decoratorInvocations.map(decoratorInvocation => {
     const decoratorType = decoratorInvocation.type;
     const annotationCls = decoratorType.annotationCls;
-    const annotationArgs = decoratorInvocation.args ? decoratorInvocation.args : [];
+    const annotationArgs = decoratorInvocation.args
+      ? decoratorInvocation.args
+      : [];
     return new annotationCls(...annotationArgs);
   });
 }

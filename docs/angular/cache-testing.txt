@@ -1,0 +1,111 @@
+NPM:
+1. https://blog.greenkeeper.io/what-is-npm-s-prepublish-and-why-is-it-so-confusing-a948373e6be1
+
+Testing:
+1. https://medium.com/google-developer-experts/angular-2-testing-guide-a485b6cb1ef0
+
+https://github.com/ghoullier/angular-with-lerna
+https://github.com/JayChase/angular2-base-library
+https://github.com/manekinekko/angular-library-starter
+
+
+2. Web-Storage + IndexDB
+https://en.wikipedia.org/wiki/Web_storage
+https://github.com/WICG/indexed-db-observers/tree/master
+
+https://www.npmjs.com/package/idb
+https://www.npmjs.com/package/idb-keyval
+
+3. Cache
+http://blog.gainlo.co/index.php/2016/05/17/design-a-cache-system/
+https://taoalpha.github.io/blog/2015/11/02/tech-javascript-lru-cache/
+https://github.com/rsms/js-lru
+
+4. Angular
+https://medium.com/@maximus.koretskyi/
+https://blog.angularindepth.com/tagged/angular
+
+https://blog.angularindepth.com/setting-up-angular-from-scratch-1f518c65d8ab
+
+
+4.0 Bootstrap
+https://blog.angularindepth.com/the-essential-difference-between-constructor-and-ngoninit-in-angular-c9930c209a42
+https://blog.angularindepth.com/how-to-manually-bootstrap-an-angular-application-9a36ccf86429
+
+4.1 Decorators
+https://blog.angularindepth.com/implementing-custom-component-decorator-in-angular-4d037d5a3f0d
+https://stackoverflow.com/questions/45274539/when-and-how-s-decorator-applied-to-the-decorated-classes-from-the-angular-pack/45276490#45276490
+
+
+4.2 ReflectiveInjector deprecated for: StaticInjector
+https://blog.angularindepth.com/angular-introduces-staticinjector-should-you-care-4e059eca030c
+
+4.3 Zone and NgZone
+https://blog.angularindepth.com/i-reverse-engineered-zones-zone-js-and-here-is-what-ive-found-1f48dc87659b
+https://blog.angularindepth.com/do-you-still-think-that-ngzone-zone-js-is-required-for-change-detection-in-angular-16f7a575afef
+
+4.4 Typescript Compiler
+https://blog.angularindepth.com/configuring-typescript-compiler-a84ed8f87e3
+
+4.5 ControlValueAccessor 
+https://blog.angularindepth.com/never-again-be-confused-when-implementing-controlvalueaccessor-in-angular-forms-93b9eee9ee83
+
+4.6 Pipes
+https://blog.angularindepth.com/the-essential-difference-between-pure-and-impure-pipes-and-why-that-matters-999818aa068
+
+4.7 Property Binding
+https://blog.angularindepth.com/the-mechanics-of-property-bindings-update-in-angular-39c0812bc4ce
+
+4.8 Change Detection
+https://blog.angularindepth.com/everything-you-need-to-know-about-change-detection-in-angular-8006c51d206f
+https://hackernoon.com/angulars-digest-is-reborn-in-the-newer-version-of-angular-718a961ebd3e
+https://hackernoon.com/the-mechanics-of-dom-updates-in-angular-3b2970d5c03d
+https://hackernoon.com/the-mechanics-of-property-bindings-update-in-angular-39c0812bc4ce
+https://blog.angularindepth.com/everything-you-need-to-know-about-the-expressionchangedafterithasbeencheckederror-error-e3fd9ce7dbb4
+
+4.9 Web Workers
+https://blog.angularindepth.com/angular-with-web-workers-step-by-step-dc11d5872135
+
+4.10 HttpWebClient
+https://blog.angularindepth.com/the-new-angular-httpclient-api-9e5c85fe3361
+https://medium.com/netscape/testing-with-the-angular-httpclient-api-648203820712
+
+4.11 ngDoCheck
+https://blog.angularindepth.com/if-you-think-ngdocheck-means-your-component-is-being-checked-read-this-article-36ce63a3f3e5
+
+4.12 AoT
+https://blog.angularindepth.com/making-your-angular-2-library-statically-analyzable-for-aot-e1c6f3ebedd5
+https://stackoverflow.com/questions/16232631/angularjs-server-side-rendering
+http://blog.ninya.io/posts/how-we-handle-server-side-rendering-with-our-angularjs-app/
+https://docs.google.com/document/d/195L4WaDSoI_kkW094LlShH6gT3B7K1GZpSBnnLkQR-g/preview
+https://www.youtube.com/watch?v=RXYjPYkFwy4
+https://www.youtube.com/watch?v=tBV4IQwPssU
+https://blog.thoughtram.io/angular/2015/09/17/resolve-service-dependencies-in-angular-2.html
+
+4.13 Modules
+https://blog.angularindepth.com/avoiding-common-confusions-with-modules-in-angular-ada070e6891f
+https://blog.angularindepth.com/what-is-forwardref-in-angular-and-why-we-need-it-6ecefb417d48
+
+4.14 Components
+https://blog.angularindepth.com/exploring-angular-dom-abstractions-80b3ebcfc02
+https://blog.angularindepth.com/the-mechanics-of-dom-updates-in-angular-3b2970d5c03d
+https://blog.angularindepth.com/here-is-why-you-will-not-find-components-inside-angular-bdaf204d955c
+https://blog.angularindepth.com/here-is-what-you-need-to-know-about-dynamic-components-in-angular-ac1e96167f9e
+https://blog.angularindepth.com/here-is-how-to-get-viewcontainerref-before-viewchild-query-is-evaluated-f649e51315fb
+https://blog.angularindepth.com/implementing-custom-component-decorator-in-angular-4d037d5a3f0d
+https://developers.google.com/web/fundamentals/web-components/customelements
+
+
+4.15 Style
+https://blog.angularindepth.com/this-is-how-angular-cli-webpack-delivers-your-css-styles-to-the-client-d4adf15c4975
+
+
+5. RxJs
+https://blog.angularindepth.com/tagged/rxjs
+
+5.1 Subject
+https://medium.com/@benlesh/on-the-subject-of-subjects-in-rxjs-2b08b7198b93
+
+
+
+
