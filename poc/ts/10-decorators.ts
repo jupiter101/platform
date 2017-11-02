@@ -4,11 +4,11 @@ import 'reflect-metadata';
 
 console.log('########  1. Class decorator / Multiple decorators');
 // 1. Class decorator / Multiple decorators
-function simpleFirstClassDecorator(constructor: Function) {
+function simpleFirstClassDecorator(constructor : Function) {
   console.log('simpleFirstClassDecorator called.');
 }
 
-function simpleSecondClassDecorator(constructor: Function) {
+function simpleSecondClassDecorator(constructor : Function) {
   console.log('simpleSecondClassDecorator called.');
   constructor('test1');
 }
@@ -17,9 +17,7 @@ function simpleSecondClassDecorator(constructor: Function) {
 @simpleFirstClassDecorator //called second
 @simpleSecondClassDecorator //called first
 class ClassWithSimpleClassDecorator {
-  constructor(test: string) {
-    console.log(`constructor called: ${test}`);
-  }
+  constructor(test: string){console.log(`constructor called: ${test}`);}
 }
 
 let instance_1 = new ClassWithSimpleClassDecorator('test2');
@@ -40,12 +38,13 @@ decorator factory can be used within the decorator function itself.
 console.log('\n########  2. Decorator factories');
 
 function decoratorFactory(name: string) {
-  return (constructor: Function) =>
-    console.log(`decorator function called with : ${name}`);
+  return (constructor : Function ) => console.log(`decorator function called with : ${name}`);
+
 }
 
 @decoratorFactory('testName')
-class ClassWithDecoratorFactory {}
+class ClassWithDecoratorFactory {
+}
 
 /*
 3. Class decorator parameters
@@ -55,16 +54,15 @@ console.log('\n########  3. Class decorator parameters');
 function classConstructorDec(constructor: Function) {
   console.log(`constructor : ${constructor}`);
   console.log(`constructor.name : ${(<any>constructor).name}`);
-  constructor.prototype.testProperty = 'testProperty_value';
+  constructor.prototype.testProperty = "testProperty_value";
+
 }
 @classConstructorDec
-class ClassWithConstructor {}
+class ClassWithConstructor {
+}
 
 let classConstrInstance = new ClassWithConstructor();
-console.log(
-  `classConstrInstance.testProperty : ` +
-    `${(<any>classConstrInstance).testProperty}`
-);
+console.log(`classConstrInstance.testProperty : ` + `${(<any>classConstrInstance).testProperty}`);
 
 /*
 4. Property decorators
@@ -73,10 +71,10 @@ decorator is called with two parameters--the class prototype itself, and the pro
  */
 console.log('\n########  4. Property decorators');
 
-function propertyDec(target: any, propertyKey: string) {
+function propertyDec(target: any, propertyKey : string) {
   console.log(`target : ${target}`);
   console.log(`target.constructor : ${target.constructor}`);
-  if (typeof target === 'function') {
+  if(typeof(target) === 'function') {
     console.log(`class name : ${target.name}`);
   } else {
     console.log(`class name : ${target.constructor.name}`);
@@ -85,7 +83,8 @@ function propertyDec(target: any, propertyKey: string) {
   console.log(`propertyKey : ${propertyKey}`);
 }
 class ClassWithPropertyDec {
-  @propertyDec name: string;
+  @propertyDec
+  name: string;
 }
 
 /*
@@ -96,7 +95,8 @@ is then simply a function, named Function.
  */
 console.log('\n########  5. Static property decorators');
 class ClassWithStaticPropertyDec {
-  @propertyDec static myName: string;
+  @propertyDec
+  static myName: string;
 }
 
 /*
@@ -116,11 +116,9 @@ target[methodName] to the console. This will log the actual function definition 
  */
 console.log('\n########  6. Method decorators');
 
-function methodDec(
-  target: any,
-  methodName: string,
-  descriptor?: PropertyDescriptor
-) {
+function methodDec (target: any,
+                    methodName: string,
+                    descriptor?: PropertyDescriptor) {
   console.log(`target: ${target}`);
   console.log(`methodName : ${methodName}`);
   console.log(`target[methodName] : ${target[methodName]}`);
@@ -129,7 +127,8 @@ function methodDec(
 class ClassWithMethodDec {
   @methodDec
   print(output: string) {
-    console.log(`ClassWithMethodDec.print` + `(${output}) called.`);
+    console.log(`ClassWithMethodDec.print`
+      + `(${output}) called.`);
   }
 }
 
@@ -153,22 +152,18 @@ calling through to the original class function.
  */
 console.log('\n########  7. Using method decorators');
 
-function auditLogDec(
-  target: any,
-  methodName: string,
-  descriptor?: PropertyDescriptor
-): MethodDecorator {
+function auditLogDec(target: any, methodName: string, descriptor?: PropertyDescriptor ):MethodDecorator {
   // console.log(`target: ${target}`);
   // console.log(`methodName : ${methodName}`);
   // console.log(`target[methodName] : ${target[methodName]}`);
   // console.log(`PropertyDescriptor : ${descriptor}`);
   // console.log(descriptor);
   let originalFunction = target[methodName];
-  return (target[methodName] = function(t: any, m: string) {
+  return target[methodName] = function(t: any, m: string) {
     // console.log(`target: ${target}`);
     console.log(`auditLogDec : overide of ` + ` ${methodName} called `);
     originalFunction.apply(this, arguments);
-  });
+  };
 }
 
 class ClassWithAuditDec {
@@ -178,7 +173,7 @@ class ClassWithAuditDec {
   }
 }
 let auditClass = new ClassWithAuditDec();
-auditClass.print('test');
+auditClass.print("test");
 
 /*
 8. Parameter decorators
@@ -195,14 +190,17 @@ parameter decorator ( @parameterDec ) is the same as any other decorator.
  */
 console.log('\n########  8. Parameter decorators');
 
-function parameterDec(target: any, methodName: string, parameterIndex: number) {
+function parameterDec(target: any,
+                      methodName : string,
+                      parameterIndex: number) {
   console.log(`target: ${target}`);
   console.log(`methodName : ${methodName}`);
   console.log(`parameterIndex : ${parameterIndex}`);
 }
 
 class ClassWithParamDec {
-  print(@parameterDec value: string) {}
+  print(@parameterDec value: string) {
+  }
 }
 
 /*
@@ -230,29 +228,23 @@ frameworks for dependency injection, or for generating code analysis tools.
  */
 console.log('\n########  9. Decorator metadata / Using decorator metadata');
 
-function metadataParameterDec(
-  target: any,
-  methodName: string,
-  parameterIndex: number
-) {
-  let designType = Reflect.getMetadata('design:type', target, methodName);
-  console.log(`designType: ${designType}`);
-  let designParamTypes = Reflect.getMetadata(
-    'design:paramtypes',
-    target,
-    methodName
-  );
+function metadataParameterDec(target: any,
+                              methodName : string,
+                              parameterIndex: number) {
+
+  let designType = Reflect.getMetadata("design:type", target, methodName);
+  console.log(`designType: ${designType}`)
+  let designParamTypes = Reflect.getMetadata("design:paramtypes", target, methodName);
   console.log(`paramtypes : ${designParamTypes}`);
-  let designReturnType = Reflect.getMetadata(
-    'design:returntype',
-    target,
-    methodName
-  );
+  let designReturnType = Reflect.getMetadata("design:returntype", target, methodName);
   console.log(`returntypes : ${designReturnType}`);
 }
 
 class ClassWithMetaData {
-  print(@metadataParameterDec id: number, name: string): number {
+  print(
+    @metadataParameterDec
+      id: number,
+    name: string) : number {
     return 1000;
   }
 }
@@ -301,9 +293,7 @@ function setEffectMetadataEntries(sourceProto: any, entries: EffectMetadata[]) {
   const constructor = sourceProto.constructor;
   const meta: EffectMetadata[] = constructor.hasOwnProperty(METADATA_KEY)
     ? (constructor as any)[METADATA_KEY]
-    : Object.defineProperty(constructor, METADATA_KEY, { value: [] })[
-        METADATA_KEY
-      ];
+    : Object.defineProperty(constructor, METADATA_KEY, { value: [] })[METADATA_KEY];
   Array.prototype.push.apply(meta, entries);
 }
 
@@ -322,26 +312,30 @@ function Effect({ dispatch } = { dispatch: true }): PropertyDecorator {
 console.log(getEffectMetadataEntries);
 console.log(getSourceMetadata);
 
+
 class ClassWithEffectMetaData {
-  @Effect() test: string = 'null';
+  @Effect()
+  test: string = 'null';
 
   @Effect()
-  print(id: number, name: string): number {
+  print(id: number, name: string) : number {
     return 1000;
   }
 
   @Effect({ dispatch: false })
-  print2(id: number, name: string): number {
+  print2(id: number, name: string) : number {
     return 1000;
   }
 }
+
 
 let classWithEffectMetaData = new ClassWithEffectMetaData();
 console.log(ClassWithEffectMetaData);
 console.log(getEffectMetadataEntries(classWithEffectMetaData));
 
+
 type EffectsMetadata<T> = {
-  [key in keyof T]?: undefined | { dispatch: boolean }
+  [key in keyof T]?:| undefined | { dispatch: boolean; }
 };
 
 function getEffectsMetadata<T>(instance: T): EffectsMetadata<T> {
@@ -358,9 +352,7 @@ function setEffectMetadata<T>(sourceProto: T, entries: EffectsMetadata<T>[]) {
   const constructor = sourceProto.constructor;
   const meta: EffectsMetadata<T>[] = constructor.hasOwnProperty(METADATA_KEY)
     ? (constructor as any)[METADATA_KEY]
-    : Object.defineProperty(constructor, METADATA_KEY, { value: [] })[
-        METADATA_KEY
-      ];
+    : Object.defineProperty(constructor, METADATA_KEY, { value: [] })[METADATA_KEY];
   Array.prototype.push.apply(meta, entries);
 }
 
@@ -376,12 +368,247 @@ class ClassWithEffectsMetaData {
 let classWithEffectsMetaData = new ClassWithEffectsMetaData();
 // let test = 'test';
 let dispatch: boolean = true;
-setEffectMetadata<ClassWithEffectsMetaData>(classWithEffectsMetaData, [
-  { test: { dispatch: true } },
-]);
-console.log(
-  getEffectsMetadata<ClassWithEffectsMetaData>(classWithEffectsMetaData)
-);
+setEffectMetadata<ClassWithEffectsMetaData>(classWithEffectsMetaData,[{ test: {dispatch:true} }]);
+console.log(getEffectsMetadata<ClassWithEffectsMetaData>(classWithEffectsMetaData));
 for (let obj in classWithEffectsMetaData.constructor) {
   console.log(obj);
+}
+
+//#################
+console.log('\n########  11. class_decorator.ts');
+function logClass(target: any) {
+
+  // save a reference to the original constructor
+  var original = target;
+
+  // a utility function to generate instances of a class
+  function construct(constructor, args) {
+    var c : any = function () {
+      return constructor.apply(this, args);
+    }
+    c.prototype = constructor.prototype;
+    return new c();
+  }
+
+  // the new constructor behaviour
+  var f : any = function (...args) {
+    console.log("New: " + original.name);
+    return construct(original, args);
+  }
+
+  // copy prototype so intanceof operator still works
+  f.prototype = original.prototype;
+
+  // return new constructor (will override original)
+  return f;
+}
+function logClassWithArgs(filter: Object) {
+  return (target: Object) => {
+    // implement class decorator here, the class decorator
+    // will have access to the decorator arguments (filter)
+    // because they are  stored in a closure
+  }
+}
+function logParameter(target: any, key : string, index : number) {
+  var metadataKey = `__log_${key}_parameters`;
+  if (Array.isArray(target[metadataKey])) {
+    target[metadataKey].push(index);
+  }
+  else {
+    target[metadataKey] = [index];
+  }
+}
+function logMethod(target, key, descriptor) {
+
+  if(descriptor === undefined) {
+    descriptor = Object.getOwnPropertyDescriptor(target, key);
+  }
+  var originalMethod = descriptor.value;
+
+  //editing the descriptor/value parameter
+  descriptor.value = function (...args: any[]) {
+
+    var metadataKey = `__log_${key}_parameters`;
+    var indices = target[metadataKey];
+
+    if (Array.isArray(indices)) {
+      for (var i = 0; i < args.length; i++) {
+
+        if (indices.indexOf(i) !== -1) {
+
+          var arg = args[i];
+          var argStr = JSON.stringify(arg) || arg.toString();
+          console.log(`${key} arg[${i}]: ${argStr}`);
+        }
+      }
+      var result = originalMethod.apply(this, args);
+      return result;
+    }
+    else {
+      var a = args.map(a => (JSON.stringify(a) || a.toString())).join();
+      var result = originalMethod.apply(this, args);
+      var r = JSON.stringify(result);
+      console.log(`Call: ${key}(${a}) => ${r}`);
+      return result;
+    }
+  }
+
+  // return edited descriptor as opposed to overwriting the descriptor
+  return descriptor;
+}
+function logProperty(target: any, key: string) {
+
+  // property value
+  var _val = target[key];
+
+  // property getter
+  var getter = function () {
+    console.log(`Get: ${key} => ${_val}`);
+    return _val;
+  };
+
+  // property setter
+  var setter = function (newVal) {
+    console.log(`Set: ${key} => ${newVal}`);
+    _val = newVal;
+  };
+
+  // Delete property.
+  if (delete target[key]) {
+
+    // Create new property with getter and setter
+    Object.defineProperty(target, key, {
+      get: getter,
+      set: setter,
+      enumerable: true,
+      configurable: true
+    });
+  }
+}
+function log(...args : any[]) {
+  switch(args.length) {
+    case 1:
+      return logClass.apply(this, args);
+    case 2:
+      return logProperty.apply(this, args);
+    case 3:
+      if(typeof args[2] === "number") {
+        return logParameter.apply(this, args);
+      }
+      return logMethod.apply(this, args);
+    default:
+      throw new Error();
+  }
+}
+
+{
+  @logClass
+  class Person {
+
+    public name: string;
+    public surname: string;
+
+    constructor(name : string, surname : string) {
+      this.name = name;
+      this.surname = surname;
+    }
+  }
+
+  const p: Person = new Person("remo", "jansen");
+}
+
+//#################
+{
+  console.log('\n########  12. configurable_decorator.ts');
+  @logClassWithArgs({ when : { name : "remo"} })
+  class Person {
+    public name: string;
+
+    // ...
+  }
+}
+
+//#################
+  console.log('\n########  14. decorator_factory.ts');
+
+//#################
+{
+  console.log('\n########  15. method_decorator.ts');
+
+
+  class Person {
+
+    public name: string;
+    public surname: string;
+
+    constructor(name : string, surname : string) {
+      this.name = name;
+      this.surname = surname;
+    }
+
+    @logMethod
+    public saySomething(something : string, somethingElse : string) : string {
+      return this.name + " " + this.surname + " says: " + something + " " + somethingElse;
+    }
+  }
+
+  const p: Person = new Person("remo", "jansen");
+  p.saySomething("I love playing", "halo");
+
+}
+
+//#################
+{
+  console.log('\n########  16. parameter_decorator.ts');
+  class Person {
+
+    public name: string;
+    public surname: string;
+
+    constructor(name : string, surname : string) {
+      this.name = name;
+      this.surname = surname;
+    }
+
+    @logMethod
+    public saySomething(@logParameter something : string, somethingElse : string) : string {
+      return this.name + " " + this.surname + " says: " + something + " " + somethingElse;
+    }
+  }
+
+  const p: Person = new Person("remo", "jansen");
+  p.saySomething("I love playing", "halo");
+}
+
+//#################
+{
+  console.log('\n########  17. property_decorator.ts');
+  class Person {
+    @logProperty
+    public name: string;
+    public surname: string;
+
+    constructor(name : string, surname : string) {
+      this.name = name;
+      this.surname = surname;
+    }
+  }
+
+  const p: Person = new Person("remo", "Jansen");
+  p.name = "Remo";
+  const n = p.name;
+}
+
+
+function Api(path: string) {
+  return (target: Object) => {
+    // implement class decorator here, the class decorator
+    // will have access to the decorator arguments (filter)
+    // because they are  stored in a closure
+  }
+}
+
+@Api('/model')
+class Model {
+
 }
